@@ -8,6 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: validate manifests in dir1 and dir2
-        uses: makocchi-git/actions-k8s-manifests-validate@1.0.0
+        uses: makocchi-git/actions-k8s-manifests-validate@v1.0.1
         with:
           files: ./deployment
