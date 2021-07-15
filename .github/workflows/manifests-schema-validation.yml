@@ -1,0 +1,13 @@
+name: Manifest Schema Check
+
+on: [push, pull_request]
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: validate manifests in dir1 and dir2
+        uses: makocchi-git/actions-k8s-manifests-validate@1.0.0
+        with:
+          files: ./deployment
