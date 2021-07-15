@@ -1,1 +1,3 @@
-# k8s-policy-validate
+# このリポジトリの`deployment`ディレクトリにpushしたときに、以下の2つのワークフローが実行されます。
+1. Kubevalによるマニフェストのスキーマチェック
+1. kyvernoによる`policies`ディレクトリにあるポリシーのチェック
