@@ -1,0 +1,2 @@
+現在のブランチの最新状態のファイル一覧(拡張子がymlのみ)の表示
+git ls-tree HEAD -r --name-only | grep -E "yml$"
