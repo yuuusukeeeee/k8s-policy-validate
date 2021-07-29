@@ -3,3 +3,11 @@ git ls-tree HEAD -r --name-only | grep -E "yml$"
 
 特定のフォルダのファイルを表示する
 git ls-tree HEAD -r deployment/ --name-only
+
+
+❯ git ls-tree HEAD -r deployment/ --name-only
+deployment/hoge
+deployment/sample.yml
+deployment/test-dir/fuga
+
+配列に格納してforでループさせる？
