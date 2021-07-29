@@ -1,0 +1,15 @@
+name: 'kyverno-cli-action'
+description: 'Runs kyverno cli'
+author: "yuuusukeeeee"
+branding:
+  icon: 'check'
+  color: 'red'
+inputs:
+  command:
+    description: 'kyverno command to run'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.command }}
