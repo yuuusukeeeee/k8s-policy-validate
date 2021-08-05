@@ -36,4 +36,4 @@ jobs:
         uses: ./ # Uses an action in the root directory
         with:
           command: |
-            git ls-tree HEAD -r deployment/ --name-only
+            git clone https://github.com/yuuusukeeeee/k8s-policy-validate.git && git ls-tree HEAD -r deployment/ --name-only

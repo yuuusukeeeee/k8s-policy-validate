@@ -19,6 +19,9 @@ RUN make cli && \
 
 FROM alpine:3.14.0
 
+RUN apk update && \
+    apk add --no-cache git
+
 COPY --from=kyverno-cli /kyverno /usr/bin/kyverno
 COPY entrypoint.sh /entrypoint.sh
 
