@@ -10,4 +10,10 @@ deployment/hoge
 deployment/sample.yml
 deployment/test-dir/fuga
 
-配列に格納してforでループさせる？
+
+
+リモートリポジトリのdeploymentフォルダ内にあるリソースをValidateする
+❯ git ls-tree HEAD -r deployment/ --name-only | xargs -L 1 -I FILE echo "kyverno apply ./policies --resource=FILE"
+kyverno apply ./policies --resource=deployment/hoge
+kyverno apply ./policies --resource=deployment/sample.yml
+kyverno apply ./policies --resource=deployment/test-dir/fuga
