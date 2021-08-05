@@ -19,4 +19,4 @@ jobs:
         uses: ./ # Uses an action in the root directory
         with:
           command: |
-            git clone https://github.com/yuuusukeeeee/k8s-policy-validate.git && git ls-tree HEAD -r deployment/ --name-only | xargs -I FILE kyverno apply ./policies --resource=FILE > tmp_result.txt && cat tmp_result.txt
+            git ls-tree HEAD -r deployment/ --name-only | xargs -I FILE kyverno apply ./policies --resource=FILE > tmp_result.txt && cat tmp_result.txt
