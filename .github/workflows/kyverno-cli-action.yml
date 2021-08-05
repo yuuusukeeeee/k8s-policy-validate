@@ -1,0 +1,16 @@
+name: Manifest Validate by kyverno CLI
+
+on: [push]
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    name: Run kyverno
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run kyverno
+        uses: ./ # Uses an action in the root directory
+        with:
+          command: |
+            git ls-tree HEAD -r deployment/ --name-only | xargs -L 1 echo
