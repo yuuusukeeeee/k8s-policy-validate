@@ -17,3 +17,23 @@ deployment/test-dir/fuga
 kyverno apply ./policies --resource=deployment/hoge
 kyverno apply ./policies --resource=deployment/sample.yml
 kyverno apply ./policies --resource=deployment/test-dir/fuga
+
+
+
+# github action
+name: Manifest Validate by kyverno
+
+on: [push]
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    name: Run kyverno
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run kyverno
+        uses: ./ # Uses an action in the root directory
+        with:
+          command: |
+            git ls-tree HEAD -r deployment/ --name-only
