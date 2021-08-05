@@ -1,17 +1,34 @@
-FROM golang:1.16-alpine3.14 AS kyverno-cli
+# Multi-stage docker build
+# Build stage
+FROM golang:1.16 AS builder
 
+LABEL maintainer="Kyverno"
+
+# LD_FLAGS is passed as argument from Makefile. It will be empty, if no argument passed
+ARG LD_FLAGS
+ARG TARGETPLATFORM
+
+ADD . /kyverno
+WORKDIR /kyverno
+
+RUN export GOOS=$(echo ${TARGETPLATFORM} | cut -d / -f1) && \
+    export GOARCH=$(echo ${TARGETPLATFORM} | cut -d / -f2)
+
+RUN go env
+
+RUN CGO_ENABLED=0 go build -o /output/kyverno -ldflags="${LD_FLAGS}" -v ./cmd/cli/kubectl-kyverno/
+
+# Packaging stage
+FROM scratch
+
+LABEL maintainer="Kyverno"
+
+COPY --from=builder /output/kyverno /
+COPY --from=builder /etc/passwd /etc/passwd
 COPY entrypoint.sh /entrypoint.sh
 
-RUN apk update && \
-    apk add --no-cache git make gcc musl-dev && \
-    git clone https://github.com/kyverno/kyverno.git --depth 1
+CMD /entrypoint.sh
 
-WORKDIR kyverno
+USER 10001
 
-RUN make cli && \
-    mv ./cmd/cli/kubectl-kyverno/kyverno /usr/bin/kyverno && \
-    cd $HOME && \
-    rm -rf ./kyverno && \
-    rm -rf ./go
-
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["./kyverno"]
