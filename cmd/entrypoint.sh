@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ash
 
 set -e
 set -o pipefail
@@ -7,4 +7,4 @@ set -o pipefail
 echo ">>> Running command"
 echo ""
 
-bash -c "set -e;  set -o pipefail; $1"
+ash -c "set -e;  set -o pipefail; $1"
