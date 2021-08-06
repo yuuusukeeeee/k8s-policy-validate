@@ -12,7 +12,7 @@ jobs:
       - name: Run kyverno
         uses: ./ # Uses an action in the root directory
         with:
-          run: |
+          command: |
             git clone https://github.com/yuuusukeeeee/k8s-policy-validate.git
             git ls-tree HEAD -r deployment/ --name-only
             git ls-tree HEAD -r deployment/ --name-only | xargs -I FILE kyverno apply ./policies --resource=FILE
