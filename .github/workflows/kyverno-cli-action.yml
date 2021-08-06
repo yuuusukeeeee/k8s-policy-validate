@@ -14,5 +14,11 @@ jobs:
         with:
           command: |
             git clone https://github.com/yuuusukeeeee/k8s-policy-validate.git
+            echo "###################################################"
+            echo "######### Kyverno validate below file. ############"
+            echo "###################################################"
             git ls-tree HEAD -r deployment/ --name-only
+            echo "###################################################"
+            echo "################## Validate Result ################"
+            echo "###################################################"
             git ls-tree HEAD -r deployment/ --name-only | xargs -I FILE kyverno apply ./policies --resource=FILE
