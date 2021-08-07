@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: priv-exec-deployment
+  labels:
+    app: sample_bad
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sample_bad
+  template:
+    metadata:
+      labels:
+        app: sample_bad
+    spec:
+      containers:
+      - name: priv-exec-deployment
+        image: ubuntu
+        securityContext:
+          privileged: true
+        command: [ "/bin/sh", "-c", "--" ]
+        args: [ "while true; do sleep 30; done;" ]
