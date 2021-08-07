@@ -35,4 +35,5 @@ jobs:
                   KYVERNO_COMMAND="kyverno apply ./policies -r $FILE_NAME" ;
                   echo $KYVERNO_COMMAND ;
                   kyverno apply ./policies -r $FILE_NAME ;
+                  echo "#######################################################"
                 done
