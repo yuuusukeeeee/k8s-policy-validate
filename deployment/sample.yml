@@ -12,22 +12,22 @@ spec:
     securityContext:
       runAsUser: 11211   # require no-root user
       runAsNonRoot: true
-    livenessProbe:       # require pod probes
+    livenessProbe:       # require livenessProbe
       httpGet:
         port: 80
         path: /health
       failureThreshold: 5
       periodSeconds: 5
-    readinessProbe:
+    readinessProbe:      # require readinessProbe
       httpGet:
         port: 80
         path: /
       failureThreshold: 5
       periodSeconds: 5
     resources:
-      requests:
+      requests:          # require resources requests
         cpu: 50m
         memory: 50Mi
-      limits:
+      limits:            # require equal resources.requests.memory=resources.limits.memory
         cpu: 200m
         memory: 50Mi
