@@ -25,15 +25,15 @@ jobs:
         with:
           command: |
             git clone https://github.com/yuuusukeeeee/k8s-policy-validate.git --depth 1
-            echo "###################################################"
-            echo "######### Kyverno validate below file. ############"
-            echo "###################################################"
+            echo "#############################################################################"
+            echo "#                        Kyverno validate below file.                       #"
+            echo "#############################################################################"
             echo ""
             git ls-tree HEAD -r deployment/ --name-only
             echo ""
-            echo "###################################################"
-            echo "################## Validate Result ################"
-            echo "###################################################"
+            echo "#############################################################################"
+            echo "#                              Validate Result                              #"
+            echo "#############################################################################"
             # git ls-tree HEAD -r deployment/ --name-only | xargs -I FILE kyverno apply ./policies --resource=FILE
             
             git ls-tree HEAD -r deployment/ --name-only > file_list.txt
@@ -44,5 +44,5 @@ jobs:
                   KYVERNO_COMMAND="kyverno apply ./policies/ -r $FILE_NAME"
                   echo $KYVERNO_COMMAND
                   kyverno apply ./policies/ -r $FILE_NAME
-                  echo "#######################################################"
+                  echo "#######################################################################"
                 done
