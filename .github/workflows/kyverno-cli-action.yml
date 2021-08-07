@@ -39,10 +39,10 @@ jobs:
             git ls-tree HEAD -r deployment/ --name-only > file_list.txt
             FILE_LIST=(`cat file_list.txt`)
             
-            for FILE_NAME in "${FILE_LIST[@]}" ;
+            for FILE_NAME in "${FILE_LIST[@]}"
                 do
-                  KYVERNO_COMMAND="kyverno apply ./policies/ -r $FILE_NAME" ;
-                  echo $KYVERNO_COMMAND ;
-                  kyverno apply ./policies/ -r $FILE_NAME ;
+                  KYVERNO_COMMAND="kyverno apply ./policies/ -r $FILE_NAME"
+                  echo $KYVERNO_COMMAND
+                  kyverno apply ./policies/ -r $FILE_NAME
                   echo "#######################################################"
                 done
