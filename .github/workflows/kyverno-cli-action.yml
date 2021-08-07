@@ -14,8 +14,6 @@ jobs:
         with:
           command: |
             git clone https://github.com/yuuusukeeeee/k8s-policy-validate.git --depth 1
-            apk add --no-cache bash
-            /bin/bash
             echo "###################################################"
             echo "######### Kyverno validate below file. ############"
             echo "###################################################"
