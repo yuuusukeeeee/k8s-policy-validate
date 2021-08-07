@@ -6,3 +6,6 @@ spec:
   containers:
   - name: nginx
     image: nginx
+    securityContext:
+      runAsUser: 11211
+      runAsNonRoot: true
