@@ -1,6 +1,17 @@
 name: Manifest Validate by kyverno CLI
 
-on: [push]
+# プッシュもしくはPull Requestでワークフローをトリガーする
+# GitHub Action で特定のディレクトリ配下に変更があったときのみワークフローを実行する
+# メインブランチの場合のみ
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "deployment/**"
+  pull_request:
+    branches:
+      - main
 
 jobs:
   validation:
