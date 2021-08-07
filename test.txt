@@ -1,4 +1,3 @@
-aaaaaaaaaaaaaaaaa
-bbbbbbbbbbbbbbbbb
-
-
+deployment/hoge
+deployment/sample.yml
+deployment/test-dir/fuga

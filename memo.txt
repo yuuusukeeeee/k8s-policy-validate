@@ -37,3 +37,31 @@ jobs:
         with:
           command: |
             git clone https://github.com/yuuusukeeeee/k8s-policy-validate.git && git ls-tree HEAD -r deployment/ --name-only
+
+
+
+今のactionの悪い部分
+どのコマンドの実行結果なのかわからないので、修正すべきファイルが特定できない
+実行するコマンドを出力する
+❯ git ls-tree HEAD -r deployment/ --name-only | xargs -I FILE echo "kyverno apply ./policies --resource=FILE" | tee hoge.txt
+
+
+
+ファイルの行を配列に格納
+❯ LIST=(`cat test.txt`)
+配列の長さ取得
+❯ echo "COUNT=${#LIST[@]}"
+配列の要素取り出し
+❯ for i in "${LIST[@]}" ; do echo $i  ; done
+
+
+❯ git ls-tree HEAD -r deployment/ --name-only > test.txt
+❯ FILE_LIST=(`cat test.txt`)
+❯ for FILE_NAME in "${FILE_LIST[@]}" ; 
+      do 
+        KYVERNO_COMMAND="kyverno apply ./policies -r $FILE_NAME" ; 
+        echo $KYVERNO_COMMAND ;
+        kyverno apply ./policies -r $FILE_NAME ;
+      done
+
+
