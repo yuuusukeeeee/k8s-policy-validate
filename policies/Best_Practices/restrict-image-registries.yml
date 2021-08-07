@@ -25,4 +25,4 @@ spec:
       pattern:
         spec:
           containers:
-          - image: "k8s.gcr.io/* | gcr.io/* | ghcr.io/* | docker.io/* "
+          - image: "k8s.gcr.io/* | gcr.io/* | ghcr.io/* | hub.docker.com/* "
