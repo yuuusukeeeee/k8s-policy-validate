@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - name: nginx
-    image: nginx:1.21.1  # disallow latest tag
+    image: k8s.gcr.io/nginx-slim:0.8   # disallow latest tag
     securityContext:
       runAsUser: 11211   # require no-root user
       runAsNonRoot: true
