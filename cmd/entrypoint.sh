@@ -7,4 +7,6 @@ set -o pipefail
 echo ">>> Running command"
 echo ""
 
-ash -c "set -e;  set -o pipefail; $1"
+/bin/bash
+
+bash -c "set -e;  set -o pipefail; $1"
