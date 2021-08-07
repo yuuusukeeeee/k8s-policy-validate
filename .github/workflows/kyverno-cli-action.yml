@@ -41,8 +41,8 @@ jobs:
             
             for FILE_NAME in "${FILE_LIST[@]}" ;
                 do
-                  KYVERNO_COMMAND="kyverno apply ./policies -r $FILE_NAME" ;
+                  KYVERNO_COMMAND="kyverno apply ./policies/ -r $FILE_NAME" ;
                   echo $KYVERNO_COMMAND ;
-                  kyverno apply ./policies -r $FILE_NAME ;
+                  kyverno apply ./policies/ -r $FILE_NAME ;
                   echo "#######################################################"
                 done
