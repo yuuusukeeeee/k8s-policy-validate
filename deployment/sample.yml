@@ -4,7 +4,7 @@ metadata:
   name: nginx
   namespace: sample      # require not default namespace
   labels:
-    app: good_sample
+    app.kubernetes.io/name: nginx
 spec:
   containers:
   - name: nginx
@@ -18,3 +18,16 @@ spec:
         path: /health
       failureThreshold: 5
       periodSeconds: 5
+    readinessProbe:
+      httpGet:
+        port: 80
+        path: /
+      failureThreshold: 5
+      periodSeconds: 5
+    resources:
+      requests:
+        cpu: 50m
+        memory: 50Mi
+      limits:
+        cpu: 200m
+        memory: 50Mi
