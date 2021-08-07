@@ -2,10 +2,19 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: nginx
+  namespace: sample      # require not default namespace
+  labels:
+    app: good_sample
 spec:
   containers:
   - name: nginx
-    image: nginx
+    image: nginx:1.21.1  # disallow latest tag
     securityContext:
-      runAsUser: 11211
+      runAsUser: 11211   # require no-root user
       runAsNonRoot: true
+    livenessProbe:       # require pod probes
+      httpGet:
+        port: 80
+        path: /health
+      failureThreshold: 5
+      periodSeconds: 5
