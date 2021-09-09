@@ -31,4 +31,4 @@ spec:
       limits:            # require equal resources.requests.memory=resources.limits.memory
         cpu: 200m
         memory: 50Mi
-# hoge
+
